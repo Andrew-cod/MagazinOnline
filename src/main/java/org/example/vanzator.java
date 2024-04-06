@@ -40,6 +40,7 @@ public class vanzator extends user{
                 //altfel return false
                 if (valid.validParola(inputParola)) {
                     //adauga la baza de date o inregistrare noua
+
                     String s = "'" +inputEmail+"'"+","+"'"+valid.sha256(inputParola)+"'";
                     conectiune.sql_update("INSERT INTO vanzator (email, parola) VALUES ("+s+");");
                     return true;
@@ -52,4 +53,26 @@ public class vanzator extends user{
         }
         return false;
     }
+
+    public boolean puneProdus(){
+        return false;
+    }
+
+    public boolean anulereVanzare(){
+        return false;
+    }
+
+    public boolean aprobareVanzare(){
+        return false;
+    }
+
+    public boolean cerereAprobareCont(){
+        return false;
+    }
+
+    public boolean aprobareNegociere(){
+        return false;
+    }
+
+
 }
