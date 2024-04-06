@@ -55,4 +55,15 @@ public class cumparator extends user {
         return false;
     }
 
+    public boolean cumparaProdus(){
+        return false;
+    }
+
+    public boolean faceOferta(){
+        return false;
+    }
+
+    public boolean viziualizareListaProduse(){
+        return false;
+    }
 }
