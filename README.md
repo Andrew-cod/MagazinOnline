@@ -1,2 +1,0 @@
-# MagazinOnline
-Proiect IS
