@@ -19,19 +19,19 @@ public class conectiune {
             return null;
         }
 
-    public static int sql_update(String sqlStatement){
+    public static boolean sql_update(String sqlStatement){
         try {
             if (connect == null) {
                 connect = connect();
             }
             Statement statement;
             statement = connect.createStatement();
-            return statement.executeUpdate(sqlStatement);
+            return statement.executeUpdate(sqlStatement)!=0;
         }
         catch(SQLException s){
             System.out.println(s);
         }
-        return 0;
+        return false;
     }
 
         private static Connection connect() throws SQLException {

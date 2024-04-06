@@ -55,6 +55,7 @@ public class vanzator extends user{
     }
 
     public boolean puneProdus(){
+
         return false;
     }
 
