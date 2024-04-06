@@ -12,14 +12,19 @@ public class cumparator extends user {
     @Override
     public boolean login(String inputEmail,String inputParola) {
         try {
-            ResultSet r = conectiune.sql_get("SELECT *\n" +
-                    "FROM cumparator\n" +
-                    "WHERE email = '" + inputEmail + "';");
-            if (r != null) {
-                return r.getString("parola").equals(inputParola);
+            if (valid.validEmail(inputEmail)) {
+                ResultSet r = conectiune.sql_get("SELECT EMAIL,PAROLA FROM CUMPARATOR WHERE EMAIL='" + inputEmail + "';");
+                if (r != null && r.next()) {
+                    if (r.getString("email").equals(inputEmail)) {
+                        if(r.getString("parola").equals(valid.sha256(inputParola)))
+                            return true;
+                    }
+                }
             }
         }catch(SQLException s){
             System.out.println(s);
+
+            return false;
         }
         return false;
     }
