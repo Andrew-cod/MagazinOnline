@@ -7,7 +7,24 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class vanzator extends user{
+    public boolean login(String inputEmail, String inputParola){
+        try {
+            if (valid.validEmail(inputEmail)) {
+                ResultSet r = conectiune.sql_get("SELECT EMAIL,PAROLA FROM VANZATOR WHERE EMAIL='" + inputEmail + "';");
+                if (r != null && r.next()) {
+                    if (r.getString("email").equals(inputEmail)) {
+                        if(r.getString("parola").equals(valid.sha256(inputParola)))
+                            return true;
+                    }
+                }
+            }
+        }catch(SQLException s){
+            System.out.println(s);
 
+            return false;
+        }
+        return false;
+    }
 
     @Override
     public boolean creeazaCont(String inputEmail, String inputParola) {
