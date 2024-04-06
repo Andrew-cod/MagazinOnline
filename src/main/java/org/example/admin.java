@@ -10,6 +10,19 @@ public class admin extends user {
         return false;
     }
 
+    public boolean adaugaVanzatori(){
+        return false;
+    }
+
+    public boolean verificaVanzator(){
+        return false;
+    }
+
+    public boolean anulareContVanzator(){
+        return false;
+    }
+
+
     @Override
     public boolean creeazaCont(String inputEmail, String inputParola) {
         return false;
