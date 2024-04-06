@@ -1,5 +1,12 @@
 package org.example;
 
+import org.example.connection.conectiune;
+import org.example.validPass.valid;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.HashMap;
+
 public class admin extends user {
 
     @Override
@@ -10,24 +17,57 @@ public class admin extends user {
         return false;
     }
 
-    public boolean adaugaVanzatori(){
+    public boolean adaugaVanzatori(String inputEmail,String inputParola){
+        //sigur
+        try {
+            if (valid.validEmail(inputEmail)) {
+                ResultSet r = conectiune.sql_get("SELECT *\n" +
+                        "FROM vanzator\n" +
+                        "WHERE email = '"+inputEmail+"';");
+                if(r!=null && r.next())
+                    if( r.getInt(1)>0)
+                        return false;
+                //data altcineva nu contine accelasi email ca si inputEmail
+                //altfel return false
+                if (valid.validParola(inputParola)) {
+                    //adauga la baza de date o inregistrare noua
+
+                    String s = "'" +inputEmail+"'"+","+"'"+valid.sha256(inputParola)+"'";
+                    conectiune.sql_update("INSERT INTO vanzator (email, parola) VALUES ("+s+");");
+                    return true;
+                }
+
+            }
+        }catch(SQLException s){
+            System.out.println("nu a mesrs");
+            return false;
+        }
         return false;
     }
 
-    public boolean verificaVanzator(){
-        return false;
+    public boolean verificaVanzator(String email){
+        //sigur
+        return conectiune.sql_update("UPDATE vanzator SET verif = 1 WHERE email = '"+email+"';\n");
     }
 
-    public boolean anulareContVanzator(){
-        return false;
+    public boolean anulareContVanzator(String email){
+        return conectiune.sql_update("UPDATE vanzator SET verif = 0 WHERE email = '"+email+"';\n");
     }
 
+    public String[][] listVanzator(){
+        //nu am facut pana la urma
+        ResultSet r = conectiune.sql_get("SELECT * FROM VANZATOR");
+        try {
+            while (r != null && r.next()) {
+
+            }
+        }catch(SQLException s){
+            System.out.println(s);
+        }
+    }
 
     @Override
     public boolean creeazaCont(String inputEmail, String inputParola) {
         return false;
     }
-
-
-
 }
