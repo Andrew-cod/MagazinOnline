@@ -1,14 +1,10 @@
 package org.example;
 
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import org.example.validPass.valid;
-
 import org.example.connection.conectiune;
 public class cumparator extends user {
-
     @Override
     public boolean login(String inputEmail,String inputParola) {
         try {
@@ -56,14 +52,22 @@ public class cumparator extends user {
     }
 
     public boolean cumparaProdus(){
+        //daca produs negociabil
+            //scoate din oferta
+        //adauga la istoric
         return false;
     }
 
     public boolean faceOferta(){
+        //verifica pretul propus daca este mai mare ca cel minim
+        //verifica toate datele la cumparator si vanzator
+        //adauga in tabelul oferta cu toate datele
         return false;
     }
 
     public boolean viziualizareListaProduse(){
+        //-------nustiu cum sa returnez datele si ce tip de date sa folosesc
+
         return false;
     }
 }
