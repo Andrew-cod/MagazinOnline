@@ -5,7 +5,6 @@ import org.example.validPass.valid;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
 
 public class admin extends user {
 
@@ -54,16 +53,9 @@ public class admin extends user {
         return conectiune.sql_update("UPDATE vanzator SET verif = 0 WHERE email = '"+email+"';\n");
     }
 
-    public String[][] listVanzator(){
-        //nu am facut pana la urma
-        ResultSet r = conectiune.sql_get("SELECT * FROM VANZATOR");
-        try {
-            while (r != null && r.next()) {
-
-            }
-        }catch(SQLException s){
-            System.out.println(s);
-        }
+    public boolean listVanzator(){
+        //--nustiu ce tip de date sa folosesc si cum sa returnez
+        return false;
     }
 
     @Override
