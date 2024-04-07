@@ -54,9 +54,9 @@ public class vanzator extends user{
         return false;
     }
 
-    public boolean puneProdus(){
-
-        return false;
+    public boolean puneProdus(String nume,int vid,double pret,String descriere,boolean nego){
+        String s = "'" +nume+"'"+","+"'" +vid+"'"+","+"'" +pret+"'"+","+"'" +descriere+"'"+","+"'" +nego+"'";
+        return conectiune.sql_update("INSERT INTO produs (nume, vid,pret,desc,nego) VALUES ("+s+");");
     }
 
     public boolean anulereVanzare(){
